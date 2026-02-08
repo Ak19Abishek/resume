@@ -3,316 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abishek - Software Engineer</title>
+    <title>Abishek | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            /* Modern Dark Theme Palette */
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #c084fc;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.1) 0%, transparent 40%);
         }
 
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header p {
-            font-size: 1.3em;
-            opacity: 0.9;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
         }
 
-        nav {
-            background-color: #333;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
+        .btn {
             display: inline-block;
-            transition: background-color 0.3s;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
         }
 
-        nav a:hover {
-            background-color: #667eea;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
         }
 
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            box-shadow: none;
+            margin-left: 10px;
+        }
+
+        .btn.secondary:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--primary);
+        }
+
+        /* --- Container & Sections --- */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         section {
-            background-color: rgb(240, 224, 224);
-            margin: 20px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
         }
 
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* --- About --- */
         .about-content {
-            font-size: 1.1em;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
         }
 
+        /* --- Skills --- */
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 15px;
         }
 
-        .skill {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            color: #667eea;
-            border-left: 4px solid #667eea;
+        .skill-tag {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        .skill-tag i {
+            color: var(--primary);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* --- Projects --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
-            border: 2px solid #667eea;
-            transition: transform 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- Contact --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            font-size: 1.1em;
+            gap: 20px;
         }
 
-        /* Contact form styles */
-        .contact-form {
-            display: grid;
-            gap: 12px;
-            max-width: 600px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1em;
-            width: 100%;
-        }
-
-        .contact-actions {
+        .info-item {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-muted);
         }
 
-        .btn {
-            background-color: #667eea;
+        .info-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
             color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
+            font-family: inherit;
+            transition: 0.3s;
         }
 
-        .btn.secondary {
-            background-color: #f0f0f0;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-
-        .contact-info a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-info a:hover {
-            color: #764ba2;
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0,0,0,0.3);
         }
 
         footer {
-            background-color: #333;
-            color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 50px 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            nav { width: 95%; padding: 15px; }
+            .nav-links { display: none; } /* Could implement burger menu here */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Abishek</h1>
-        <p>Software Engineer | Problem Solver | Tech Enthusiast</p>
-    </header>
 
     <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <div class="logo">Abishek<span style="color:var(--primary)">.</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
+    <header>
+        <div class="hero-badge">Available for Hire</div>
+        <h1>Hello, I'm <span class="gradient-text">Abishek</span></h1>
+        <p>Software Engineer | Fullstack Developer | Data Scientist</p>
+        <div>
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+    </header>
+
     <div class="container">
-        <!-- About Section -->
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
                 <p>
-                    Hello! I'm Abishek, a passionate software engineer with a strong foundation in full-stack development and problem-solving. 
-                    I have a keen interest in building scalable applications and exploring emerging technologies. With experience in various 
-                    programming languages and frameworks, I'm committed to writing clean, efficient code and delivering high-quality solutions.
-                </p>
-                <p style="margin-top: 15px;">
-                    I love collaborating with teams, learning new technologies, and turning ideas into reality through code.
+                    I am a passionate software engineer with a strong foundation in full-stack development. 
+                    I specialize in building scalable applications and exploring emerging technologies. 
+                    My goal is to write clean, efficient code and deliver high-quality solutions that solve real-world problems.
                 </p>
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills">
-            <h2>Skills</h2>
+            <h2>Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill">Python</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">React</div>
-                <div class="skill">Node.js</div>
-                <div class="skill">SQL</div>
-                <div class="skill">HTML/CSS</div>
-                <div class="skill">Java</div>
-                <div class="skill">Git</div>
-                <div class="skill">REST APIs</div>
-                <div class="skill">AWS</div>
+                <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+                <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="skill-tag"><i class="fab fa-react"></i> React</div>
+                <div class="skill-tag"><i class="fab fa-node"></i> Node.js</div>
+                <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
+                <div class="skill-tag"><i class="fab fa-html5"></i> HTML/CSS</div>
+                <div class="skill-tag"><i class="fab fa-java"></i> Java</div>
+                <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
+                <div class="skill-tag"><i class="fas fa-cloud"></i> AWS</div>
+                <div class="skill-tag"><i class="fas fa-server"></i> REST APIs</div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
-            <h2>Projects</h2>
+            <h2>Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>E-Commerce Platform</h3>
-                    <p>Built a full-stack e-commerce application with React, Node.js, and MongoDB. Features include user authentication, product catalog, and payment integration.</p>
+                    <p>A full-stack application with React, Node.js, and MongoDB. Features secure auth, product catalog, and Stripe payment.</p>
+                    <div class="project-links">
+                        <a href="#">View Code <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Task Management App</h3>
-                    <p>Created a collaborative task management tool using React and Firebase. Includes real-time updates, user collaboration, and task tracking.</p>
+                    <p>Collaborative tool using React and Firebase. Real-time updates, drag-and-drop interface, and team workspaces.</p>
+                    <div class="project-links">
+                        <a href="#">View Code <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Weather Dashboard</h3>
-                    <p>Developed a weather application using JavaScript and OpenWeather API. Displays real-time weather data with clean, responsive UI.</p>
+                    <p>Data visualization using JavaScript and OpenWeather API. Displays real-time metrics with a responsive glassmorphism UI.</p>
+                    <div class="project-links">
+                        <a href="#">View Code <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2>Get In Touch</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a id="emailLink" href="mailto:akabishektn@gmail.com">akabishektn@gmail.com</a></p>
-                <div class="contact-actions">
-                    <button class="btn" onclick="copyEmail()" id="copyBtn">Copy Email</button>
-                    <a class="btn secondary" href="mailto:akabishektn@gmail.com?subject=Contact%20from%20Portfolio" target="_blank">Open Mail Client</a>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="emailText">akabishektn@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7448997356</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/abishek" target="_blank" style="color: inherit; text-decoration: none;">linkedin.com/in/abishek</a>
+                    </div>
+                    
+                    <button class="btn secondary" onclick="copyEmail()" id="copyBtn" style="margin-top: 10px;">
+                        <i class="far fa-copy"></i> Copy Email
+                    </button>
                 </div>
 
-                <p style="margin-top:8px;"><strong>Or send a message directly:</strong></p>
-
                 <form class="contact-form" onsubmit="handleContactSubmit(event)">
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                    <input type="email" id="email" name="email" placeholder="Your email" required>
-                    <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
-                    <div class="contact-actions">
-                        <button class="btn" type="submit">Send Message</button>
-                        <button class="btn secondary" type="reset">Reset</button>
-                    </div>
+                    <input type="text" id="name" placeholder="Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <textarea id="message" rows="5" placeholder="Message" required></textarea>
+                    <button class="btn" type="submit">Send Message</button>
                 </form>
-
-                <p><strong>Phone:</strong> +91 7448997356</p>
-                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/bishek" target="_blank">linkedin.com/in/abishek</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/Abishek" target="_blank">github.com/Abishek</a></p>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Abishek. All rights reserved.</p>
+        <p>&copy; 2026 Abishek. Built with Modern Web Tech.</p>
     </footer>
+
     <script>
+        // Copy Email Functionality
         function copyEmail() {
             const email = 'akabishektn@gmail.com';
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(email).then(() => {
-                    const btn = document.getElementById('copyBtn');
-                    const original = btn.textContent;
-                    btn.textContent = 'Copied!';
-                    setTimeout(() => btn.textContent = original, 1800);
-                });
-            } else {
-                const el = document.createElement('textarea');
-                el.value = email;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-                alert('Email copied to clipboard');
-            }
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.borderColor = 'var(--primary)';
+                btn.style.color = 'var(--primary)';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.borderColor = 'var(--border)';
+                    btn.style.color = 'var(--text-main)';
+                }, 2000);
+            });
         }
 
+        // Contact Form Handler
         function handleContactSubmit(event) {
             event.preventDefault();
-            const name = encodeURIComponent(document.getElementById('name').value.trim());
-            const from = encodeURIComponent(document.getElementById('email').value.trim());
-            const message = encodeURIComponent(document.getElementById('message').value.trim());
-            const subject = encodeURIComponent('Portfolio contact from ' + (name || from));
-            const body = encodeURIComponent('Name: ') + name + '%0D%0A' + encodeURIComponent('Email: ') + from + '%0D%0A%0D%0A' + message;
-            const mailto = `mailto:akabishektn@gmail.com?subject=${subject}&body=${body}`;
-            window.location.href = mailto;
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(message);
+            window.location.href = `mailto:akabishektn@gmail.com?subject=${subject}&body=${body}`;
         }
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach((section) => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
